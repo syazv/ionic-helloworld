@@ -1,20 +1,90 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="danger">
     <ion-title>
-      Blank
+      My First Ionic App
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+    <ion-toolbar color="danger">
+      <ion-title size="large">My First Ionic App</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <h1>Hello World</h1>
+    <p>Hello {{name}}, welcome to my app</p>
+    <p>You are {{age}} years old</p>
+    <div class="image-container">
+      <img [src]="url" alt="Kuala Lumpur"/>
+    </div>
+
+    <ion-card>
+      <img [src]="hotel.url" alt="Hotel Molly" />
+      <ion-card-header>
+        <ion-card-title>{{hotel.name}}</ion-card-title>
+        <ion-card-subtitle>{{hotel.address}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{hotel.description}}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list>
+      <ion-item *ngFor ="let score of scores">{{score}}</ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-card *ngFor="let hotel of hotels">
+        <img [src]="hotel.url" [alt]="hotel.name">
+        <ion-card-header>
+          <ion-card-title>{{hotel.name}}</ion-card-title>
+          <ion-card-subtitle>{{hotel.address}}</ion-card-subtitle>
+        </ion-card-header>
+     
+        <ion-card-content>
+          {{hotel.description}}
+        </ion-card-content>
+     
+        <ion-button fill="clear">Book Now</ion-button>
+        <ion-button fill="clear">Vew More</ion-button>
+      </ion-card>
+    </ion-list>
+    
+    <div>
+      <h2>Form</h2>
+      <ion-item>
+        <ion-label>Name: </ion-label>
+        <ion-input placeholder="Enter Name" [(ngModel)]="userName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Subscribe to Newsletter?</ion-label>
+        <ion-toggle [(ngModel)]="newsletterSubscribed"></ion-toggle>
+      </ion-item>
+
+      <p>User entered {{userName}}</p>
+      <p>{{newsletterSubscribed ? 'You are subscribed to our newsletter' 
+        : 'Are you sure? Our newsletter is good'}}</p>
+
+      <ion-item>
+        <ion-range label="Volume" label-placement="start" min="0" max="100" 
+        step="1" [(ngModel)]="volume"></ion-range>
+        <ion-icon name="volume-low" slot="start"/>
+        <ion-icon name="volume-high" slot="end"/>
+      </ion-item>
+    </div>
+
+    <ion-button (click)="presentAlert()">Show Alert</ion-button>
+    <ion-button (click)="presentActionSheet()">Show Action Sheet</ion-button>
+    <ion-button (click)="presentToast()">Show Toast</ion-button>
+
+    <ion-button color="secondary" expand="" (click)="doSomething()">
+      Click  Me 
+      <ion-icon slot="end" name="desktop-outline"></ion-icon>
+    </ion-button>
   </div>
+  
 </ion-content>
